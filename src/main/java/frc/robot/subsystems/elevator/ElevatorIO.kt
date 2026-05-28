@@ -1,7 +1,7 @@
 package frc.robot.subsystems.elevator
 
-import kotlin.jvm.JvmField
 import org.littletonrobotics.junction.AutoLog
+import kotlin.jvm.JvmField
 
 interface ElevatorIO {
     @AutoLog
@@ -30,6 +30,8 @@ interface ElevatorIO {
 
         @JvmField var rightTempCelsius: Double = 0.0
     }
+
     fun updateInputs(inputs: ElevatorIOInputs) {}
+
     fun setVoltage(voltage: Double) {}
 }

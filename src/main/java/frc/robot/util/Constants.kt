@@ -1,13 +1,7 @@
-package frc.team449
+package frc.robot.util
 
-import edu.wpi.first.apriltag.AprilTagFieldLayout
-import edu.wpi.first.apriltag.AprilTagFields
-import edu.wpi.first.math.geometry.*
-import edu.wpi.first.math.interpolation.InterpolatingDoubleTreeMap
-import edu.wpi.first.math.util.Units
-import edu.wpi.first.units.Units.*
-import edu.wpi.first.units.measure.*
-import edu.wpi.first.units.measure.Angle
+import com.ctre.phoenix6.signals.InvertedValue
+import com.ctre.phoenix6.signals.NeutralModeValue
 import edu.wpi.first.wpilibj.RobotBase
 import kotlin.math.PI
 
@@ -16,7 +10,7 @@ object Constants {
     enum class Mode {
         REAL,
         SIM,
-        REPLAY
+        // REPLAY,
     }
 
     val CURRENT_MODE: Mode = if (RobotBase.isReal()) Mode.REAL else Mode.SIM
@@ -53,11 +47,27 @@ object Constants {
         const val INTERRUPT_DEADBAND = 0.25
         const val MODULE_ALIGN_TOLERANCE_DEG = 5.0
     }
+
     object OperatorConstants {
         const val DRIVER_CONTROLLER_PORT = 0
     }
+
     object ElevatorConstants {
-        const val LEFT_ID = 0 //nah
-        const val RIGHT_ID = 1 //nah
+        // --- TALON IDS ---
+        const val LEFT_ID = 0 // nah
+        const val RIGHT_ID = 1 // nah
+
+        // ---  TALON SETTINGS ---
+        const val TALON_SUPPLY_LIMIT = 0.0 // IDK
+        const val TALON_STATOR_LIMIT = 0.0 // IDK
+        const val TALON_GEARING_SENSOR_TO_MECH = 0.0 // MAYBE NEEDED. TO CHECK
+
+        // --- LEFT TALON ---
+        val LEFT_NEUTRAL_MODE = NeutralModeValue.Brake // check
+        val LEFT_INVERSION = InvertedValue.Clockwise_Positive // check
+
+        // --- RIGHT TALON
+        val RIGHT_NEUTRAL_MODE = NeutralModeValue.Brake // check
+        val RIGHT_INVERSION = InvertedValue.CounterClockwise_Positive // double check
     }
 }
