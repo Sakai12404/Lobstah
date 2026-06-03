@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj2.command.SubsystemBase
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Mechanism
-import frc.robot.util.Constants.DriveConstants
+import frc.robot.Constants.DriveConstants
 import limelight.networktables.AngularVelocity3d
 import org.littletonrobotics.junction.Logger
 import kotlin.jvm.optionals.getOrElse

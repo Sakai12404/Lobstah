@@ -20,7 +20,7 @@ import edu.wpi.first.math.numbers.N1
 import edu.wpi.first.math.numbers.N3
 import edu.wpi.first.units.Units
 import edu.wpi.first.units.measure.AngularVelocity
-import frc.robot.util.Constants
+import frc.robot.Constants
 import java.util.concurrent.atomic.AtomicReference
 import java.util.function.Consumer
 

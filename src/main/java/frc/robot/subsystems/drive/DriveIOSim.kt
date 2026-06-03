@@ -10,8 +10,8 @@ import edu.wpi.first.math.geometry.Rotation2d
 import edu.wpi.first.math.system.plant.DCMotor
 import edu.wpi.first.units.Units.*
 import edu.wpi.first.wpilibj.Notifier
-import frc.robot.util.Constants
-import frc.robot.util.Constants.DriveConstants
+import frc.robot.Constants
+import frc.robot.Constants.DriveConstants
 import org.ironmaple.simulation.SimulatedArena
 import org.ironmaple.simulation.drivesims.COTS
 import org.ironmaple.simulation.drivesims.SwerveDriveSimulation
