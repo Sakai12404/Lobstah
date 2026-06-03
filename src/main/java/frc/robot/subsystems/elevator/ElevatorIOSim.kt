@@ -1,3 +1,5 @@
 package frc.robot.subsystems.elevator
 
-class ElevatorIOSim
+class ElevatorIOSim : ElevatorIOHardware() {
+    // SINGLE ARM MECHANISM
+}

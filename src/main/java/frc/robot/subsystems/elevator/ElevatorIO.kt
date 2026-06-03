@@ -18,6 +18,8 @@ interface ElevatorIO {
 
         @JvmField var leftTempCelsius: Double = 0.0
 
+        @JvmField var leftPositionRad: Double = 0.0
+
         @JvmField var rightConnected: Boolean = false
 
         @JvmField var rightAppliedVoltage: Double = 0.0
@@ -29,9 +31,11 @@ interface ElevatorIO {
         @JvmField var rightStatorCurrentAmps: Double = 0.0
 
         @JvmField var rightTempCelsius: Double = 0.0
+
+        @JvmField var rightPositionRad: Double = 0.0
     }
 
     fun updateInputs(inputs: ElevatorIOInputs) {}
 
-    fun setVoltage(voltage: Double) {}
+    fun setPosition(position: Double) {}
 }

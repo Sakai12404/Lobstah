@@ -66,8 +66,11 @@ object Constants {
         val LEFT_NEUTRAL_MODE = NeutralModeValue.Brake // check
         val LEFT_INVERSION = InvertedValue.Clockwise_Positive // check
 
-        // --- RIGHT TALON
+        // --- RIGHT TALON ---
         val RIGHT_NEUTRAL_MODE = NeutralModeValue.Brake // check
         val RIGHT_INVERSION = InvertedValue.CounterClockwise_Positive // double check
+
+        // --- GEARING ---
+        const val GEAR_RATIO = 2/3
     }
 }
