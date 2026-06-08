@@ -71,9 +71,9 @@ object Constants {
         val RIGHT_INVERSION = InvertedValue.CounterClockwise_Positive // double check
 
         // --- PHYSICAL SPEC & GEARING ---
-        const val GEAR_RATIO = 2/3
-        const val MAX_ELEVATOR_LENGTH_METERS = 1.143 // 45 inches
-        const val MIN_ELEVATOR_ANGLE = 0.0
+        const val GEAR_RATIO = 0.66666666 // 2/3
+        const val MAX_ELEVATOR_LENGTH_METERS: Double = 1.143 // 45 inches
+        const val MIN_ELEVATOR_ANGLE: Double = 0.0
         const val MAX_ELEVATOR_ANGLE = 1.143 * 3/2 //  THE MAX LENGTH MULTIPLIED (GEAR RATIO)^-1 to make RADIANS
         const val ELEVATOR_MOI_KG_MM = 0.07535 // JUST MADE IT UP
     }

@@ -1,9 +1,8 @@
 package frc.robot.subsystems.elevator
 
-import com.ctre.phoenix6.configs.Slot0Configs
 import edu.wpi.first.math.system.plant.DCMotor
 import edu.wpi.first.math.util.Units
-import edu.wpi.first.wpilibj.simulation.SingleJointedArmSim
+import edu.wpi.first.wpilibj.simulation.*
 import edu.wpi.first.wpilibj.smartdashboard.Mechanism2d
 import edu.wpi.first.wpilibj.smartdashboard.MechanismLigament2d
 import edu.wpi.first.wpilibj.smartdashboard.MechanismRoot2d
