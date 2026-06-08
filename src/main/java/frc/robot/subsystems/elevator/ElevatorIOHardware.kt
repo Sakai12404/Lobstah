@@ -8,7 +8,7 @@ import com.ctre.phoenix6.hardware.TalonFX
 import frc.robot.Constants.ElevatorConstants
 import frc.team449.util.PhoenixUtil.tryUntilOk
 
-class ElevatorIOHardware : ElevatorIO {
+open class ElevatorIOHardware : ElevatorIO {
     // SETTING UP VARIABLES
     val left = TalonFX(ElevatorConstants.LEFT_ID)
     val right = TalonFX(ElevatorConstants.RIGHT_ID)
