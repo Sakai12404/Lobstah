@@ -21,4 +21,10 @@ import edu.wpi.first.wpilibj.RobotBase
  * Rename * Refactoring when renaming the object, it will get changed everywhere
  * including here.)
  */
-fun main() = RobotBase.startRobot { Robot }
+
+object Main {
+    @JvmStatic
+    fun main(args: Array<String>) {
+        RobotBase.startRobot { Robot() }
+    }
+}

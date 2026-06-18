@@ -2,6 +2,7 @@ package frc.robot.subsystems.elevator
 
 import edu.wpi.first.wpilibj.Alert
 import edu.wpi.first.wpilibj2.command.Command
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup
 import edu.wpi.first.wpilibj2.command.SubsystemBase
 import edu.wpi.first.wpilibj2.command.WaitCommand
 import frc.robot.Constants.ElevatorConstants
@@ -44,11 +45,11 @@ class ElevatorSubsystem(
         x: Double,
         y: Double,
     ): Command =
-        runOnce {
-            moveElevator(x)
-            WaitCommand(1.0)
+        SequentialCommandGroup(
+            moveElevator(x),
+            WaitCommand(1.0),
             moveElevator(y)
-        }
+        )
 
     // RETURNS THE ELEVATOR TO THE BOTTOM
     fun returnElevatorBottom(): Command =

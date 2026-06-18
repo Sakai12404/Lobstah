@@ -2,6 +2,7 @@ package frc.robot
 
 import com.ctre.phoenix6.signals.InvertedValue
 import com.ctre.phoenix6.signals.NeutralModeValue
+import edu.wpi.first.math.util.Units
 import edu.wpi.first.wpilibj.RobotBase
 import kotlin.math.PI
 
@@ -60,7 +61,6 @@ object Constants {
         // ---  TALON SETTINGS ---
         const val TALON_SUPPLY_LIMIT = 0.0 // IDK
         const val TALON_STATOR_LIMIT = 0.0 // IDK
-        const val TALON_GEARING_SENSOR_TO_MECH = 0.0 // MAYBE NEEDED. TO CHECK
 
         // --- LEFT TALON ---
         val LEFT_NEUTRAL_MODE = NeutralModeValue.Brake // check
@@ -71,10 +71,10 @@ object Constants {
         val RIGHT_INVERSION = InvertedValue.CounterClockwise_Positive // double check
 
         // --- PHYSICAL SPEC & GEARING ---
+        const val CARRIAGE_MASS = 4.0
         const val GEAR_RATIO = 0.66666666 // 2/3
-        const val MAX_ELEVATOR_LENGTH_METERS: Double = 1.143 // 45 inches
-        const val MIN_ELEVATOR_ANGLE: Double = 0.0
-        const val MAX_ELEVATOR_ANGLE = 1.143 * 3/2 //  THE MAX LENGTH MULTIPLIED (GEAR RATIO)^-1 to make RADIANS
-        const val ELEVATOR_MOI_KG_MM = 0.07535 // JUST MADE IT UP
+        const val DRUM_RADIUS = 5.0 // IDK YET
+        const val MIN_ELEVATOR_HEIGHT = 0.0
+        val MAX_ELEVATOR_HEIGHT = Units.inchesToMeters(52.0)
     }
 }

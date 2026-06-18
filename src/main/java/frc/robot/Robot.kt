@@ -3,11 +3,17 @@ package frc.robot
 import edu.wpi.first.hal.FRCNetComm.tInstances
 import edu.wpi.first.hal.FRCNetComm.tResourceType
 import edu.wpi.first.hal.HAL
+import edu.wpi.first.math.geometry.Pose3d
+import edu.wpi.first.math.geometry.Rotation3d
+import edu.wpi.first.math.util.Units
 import edu.wpi.first.wpilibj.TimedRobot
 import edu.wpi.first.wpilibj.util.WPILibVersion
 import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj2.command.CommandScheduler
 import frc.robot.commands.Autos
+import org.littletonrobotics.junction.LoggedRobot
+import org.littletonrobotics.junction.Logger
+import org.littletonrobotics.junction.networktables.NT4Publisher
 
 /**
  * The functions in this object (which basically functions as a singleton class) are called automatically
@@ -19,7 +25,7 @@ import frc.robot.commands.Autos
  * the `Main.kt` file in the project. (If you use the IDE's Rename or Move refactorings when renaming the
  * object or package, it will get changed everywhere.)
  */
-object Robot : TimedRobot()
+class Robot : LoggedRobot()
 {
     /**
      * The autonomous command to run. While a default value is set here,
@@ -38,16 +44,17 @@ object Robot : TimedRobot()
         
         // Report the use of the Kotlin Language for "FRC Usage Report" statistics.
         // Please retain this line so that Kotlin's growing use by teams is seen by FRC/WPI.
+        Logger.addDataReceiver(NT4Publisher())
         HAL.report(tResourceType.kResourceType_Language, tInstances.kLanguage_Kotlin, 0, WPILibVersion.Version)
         // Access the RobotContainer object so that it is initialized. This will perform all our
         // button bindings, and put our autonomous chooser on the dashboard.
         RobotContainer
+        Logger.start()
     }
 
     /**
      * This method is called every 20 ms, no matter the mode. Use this for items like
      * diagnostics that you want ran during disabled, autonomous, teleoperated and test.
-     *
      * This runs after the mode specific periodic methods, but before LiveWindow and
      * SmartDashboard integrated updating.
      */
@@ -58,6 +65,7 @@ object Robot : TimedRobot()
         // and running subsystem periodic() methods.  This must be called from the robot's periodic
         // block in order for anything in the Command-based framework to work.
         CommandScheduler.getInstance().run()
+        logComponents()
     }
 
     /** This method is called once each time the robot enters Disabled mode.  */
@@ -120,5 +128,19 @@ object Robot : TimedRobot()
     override fun simulationPeriodic()
     {
 
+    }
+    private fun logComponents(){
+        // Need to separate elevator into all stages
+        Logger.recordOutput("ZeroedComponentsPoses", Pose3d(
+            0.3,
+            0.0,
+            -0.25,
+            Rotation3d(
+                Math.toRadians(-90.0), // Roll (X)
+                Math.toRadians(180.0), // Pitch (Y)
+                Math.toRadians(90.0)   // Yaw (Z)
+            )
+        )
+        )
     }
 }

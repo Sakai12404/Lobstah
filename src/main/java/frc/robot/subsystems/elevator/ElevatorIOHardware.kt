@@ -56,9 +56,9 @@ open class ElevatorIOHardware : ElevatorIO {
     private val isRightConnected: Boolean
         get() =
             BaseStatusSignal.isAllGood(
-                leftVoltage,
-                leftVelocity,
-                leftStatorCurrent,
+                rightVoltage,
+                rightVelocity,
+                rightStatorCurrent,
             )
 
     init {
