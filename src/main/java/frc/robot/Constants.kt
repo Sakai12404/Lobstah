@@ -74,7 +74,7 @@ object Constants {
         const val CARRIAGE_MASS = 4.0
         const val GEAR_RATIO = 0.66666666 // 2/3
         const val DRUM_RADIUS = 5.0 // IDK YET
-        const val MIN_ELEVATOR_HEIGHT = 0.0
+        const val MIN_ELEVATOR_HEIGHT = 0.027637 // Make that it rung is not on top of each other
         val MAX_ELEVATOR_HEIGHT = Units.inchesToMeters(52.0)
     }
 }

@@ -1,5 +1,6 @@
 package frc.robot.subsystems.elevator
 
+import frc.robot.Constants.ElevatorConstants
 import org.littletonrobotics.junction.AutoLog
 import kotlin.jvm.JvmField
 
@@ -33,6 +34,8 @@ interface ElevatorIO {
         @JvmField var rightTempCelsius: Double = 0.0
 
         @JvmField var rightPositionRad: Double = 0.0
+
+        @JvmField var elevatorPos: Double = ElevatorConstants.MIN_ELEVATOR_HEIGHT
     }
 
     fun updateInputs(inputs: ElevatorIOInputs) {}

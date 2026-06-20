@@ -72,23 +72,25 @@ open class ElevatorIOHardware : ElevatorIO {
         BaseStatusSignal.refreshAll(*elevatorSignals)
 
         inputs.leftConnected = isLeftConnected
-        inputs.leftAppliedVoltage = leftVoltage.valueAsDouble // .value.'in'(Units.Volts)
-        inputs.leftVelocityRadPerSec = leftVelocity.valueAsDouble // .'in'(Units.RadiansPerSecond)
-        inputs.leftSupplyCurrentAmps = leftSupplyCurrent.valueAsDouble // .'in'(Units.Amps)
-        inputs.leftStatorCurrentAmps = leftStatorCurrent.valueAsDouble // .'in'(Units.Amps)
-        inputs.leftTempCelsius = leftTemp.valueAsDouble // .'in'(Units.Celsius)
+        inputs.leftAppliedVoltage = leftVoltage.valueAsDouble
+        inputs.leftVelocityRadPerSec = leftVelocity.valueAsDouble
+        inputs.leftSupplyCurrentAmps = leftSupplyCurrent.valueAsDouble
+        inputs.leftStatorCurrentAmps = leftStatorCurrent.valueAsDouble
+        inputs.leftTempCelsius = leftTemp.valueAsDouble
         inputs.leftPositionRad = leftPosition.valueAsDouble
 
         inputs.rightConnected = isRightConnected
-        inputs.rightAppliedVoltage = rightVoltage.valueAsDouble // .'in'(Units.Volts)
-        inputs.rightVelocityRadPerSec = rightVelocity.valueAsDouble // .'in'(Units.RadiansPerSecond)
-        inputs.rightSupplyCurrentAmps = rightSupplyCurrent.valueAsDouble // .'in'(Units.Amps)
-        inputs.rightStatorCurrentAmps = rightStatorCurrent.valueAsDouble // .'in'(Units.Amps)
-        inputs.rightTempCelsius = rightTemp.valueAsDouble // .'in'(Units.Celsius)
+        inputs.rightAppliedVoltage = rightVoltage.valueAsDouble
+        inputs.rightVelocityRadPerSec = rightVelocity.valueAsDouble
+        inputs.rightSupplyCurrentAmps = rightSupplyCurrent.valueAsDouble
+        inputs.rightStatorCurrentAmps = rightStatorCurrent.valueAsDouble
+        inputs.rightTempCelsius = rightTemp.valueAsDouble
         inputs.rightPositionRad = rightPosition.valueAsDouble
+
+        inputs.elevatorPos = 0.0
     }
 
-    // Sets the elevator to move at voltage
+    // sets both motors control based of position requests
     override fun setPosition(position: Double) {
         left.setControl(leftPositionRequest.withPosition(position))
         right.setControl(rightPositionRequest.withPosition(position))

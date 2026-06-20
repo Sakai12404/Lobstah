@@ -6,16 +6,15 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup
 import edu.wpi.first.wpilibj2.command.SubsystemBase
 import edu.wpi.first.wpilibj2.command.WaitCommand
 import frc.robot.Constants.ElevatorConstants
-import org.littletonrobotics.junction.AutoLogOutput
 import org.littletonrobotics.junction.Logger
+
 
 class ElevatorSubsystem(
     private val io: ElevatorIO,
 ) : SubsystemBase() {
     private val inputs: ElevatorIOInputsAutoLogged = ElevatorIOInputsAutoLogged()
 
-    @AutoLogOutput(key = "Elevator/Position")
-    var elevatorTargetPosition: Double = 0.0
+    var elevatorTargetPosition: Double = inputs.elevatorPos
         private set
 
     private val leftDisconnectAlert =
@@ -53,6 +52,6 @@ class ElevatorSubsystem(
         )
 
     // RETURNS THE ELEVATOR TO THE BOTTOM
-    fun returnElevatorBottom(): Command = moveElevator(0.0)
+    fun returnElevatorBottom(): Command = moveElevator(0.027637)
 
 }

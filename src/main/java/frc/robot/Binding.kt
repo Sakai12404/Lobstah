@@ -17,30 +17,26 @@ class Binding(
             )
     }
 
+    // simple control binds with arbitrary values
     fun bindControls() {
         driver
             .cross()
             .onTrue(
-                robotContainer.elevator.moveElevator(0.534)
-            )
-        driver
-            .circle()
-            .onTrue(
-                robotContainer.elevator.moveElevatorTwice(0.32,0.56)
+                robotContainer.elevator.moveElevator(1.2),
             )
         driver
             .triangle()
             .onTrue(
-                robotContainer.elevator.returnElevatorBottom()
+                robotContainer.elevator.returnElevatorBottom(),
             )
+        driver
+            .circle()
+            .onTrue(
+                robotContainer.elevator.moveElevatorTwice(0.9, 1.735),
+            )
+
         driver
             .touchpad()
             .onTrue(robotContainer.drive.seedFieldCentric())
-        /*driver // only works w xbox tf
-            .start()
-            .onTrue(
-                robotContainer.drive.seedFieldCentric()
-            )
-        */
     }
 }

@@ -15,7 +15,7 @@ class ElevatorIOSim : ElevatorIOHardware() {
             ElevatorConstants.MIN_ELEVATOR_HEIGHT,
             ElevatorConstants.MAX_ELEVATOR_HEIGHT,
             true,
-            0.0,
+            ElevatorConstants.MIN_ELEVATOR_HEIGHT,
         )
 
     private val leftSimState = left.simState
@@ -24,6 +24,7 @@ class ElevatorIOSim : ElevatorIOHardware() {
     override fun updateInputs(inputs: ElevatorIO.ElevatorIOInputs) {
         super.updateInputs(inputs)
 
+        inputs.elevatorPos = elevatorSim.positionMeters
         leftSimState.setSupplyVoltage(12.0)
         rightSimState.setSupplyVoltage(12.0)
         elevatorSim.setInput(leftSimState.motorVoltage)
