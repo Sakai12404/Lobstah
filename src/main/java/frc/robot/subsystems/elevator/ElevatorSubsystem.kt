@@ -31,6 +31,7 @@ class ElevatorSubsystem(
         rightDisconnectAlert.set(!inputs.rightConnected)
 
         Logger.recordOutput("Elevator/ActiveCommand", currentCommand?.name ?: "None")
+        Logger.recordOutput("Elevator/elevatorTargetPosition", elevatorTargetPosition)
     }
 
     // MOVES ELEVATOR BY X METERS ABOVE HARDSTOP
@@ -52,8 +53,6 @@ class ElevatorSubsystem(
         )
 
     // RETURNS THE ELEVATOR TO THE BOTTOM
-    fun returnElevatorBottom(): Command =
-        runOnce {
-            moveElevator(0.0)
-        }
+    fun returnElevatorBottom(): Command = moveElevator(0.0)
+
 }
