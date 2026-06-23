@@ -11,7 +11,7 @@ object Constants {
     enum class Mode {
         REAL,
         SIM,
-        // REPLAY,
+        REPLAY,
     }
 
     val CURRENT_MODE: Mode = if (RobotBase.isReal()) Mode.REAL else Mode.SIM
@@ -59,22 +59,27 @@ object Constants {
         const val RIGHT_ID = 1 // nah
 
         // ---  TALON SETTINGS ---
-        const val TALON_SUPPLY_LIMIT = 0.0 // IDK
-        const val TALON_STATOR_LIMIT = 0.0 // IDK
+        const val TALON_SUPPLY_LIMIT = 60.0 // Limits the current drawn from the battery
+        const val TALON_STATOR_LIMIT = 90.0 // Limits the current inside the motor
+
+        const val kP = 30.0
+        const val kI = 0.75
+        const val kD = 0.20
+        const val kG = 0.4
 
         // --- LEFT TALON ---
-        val LEFT_NEUTRAL_MODE = NeutralModeValue.Brake // check
-        val LEFT_INVERSION = InvertedValue.Clockwise_Positive // check
+        val LEFT_NEUTRAL_MODE = NeutralModeValue.Brake
+        val LEFT_INVERSION = InvertedValue.CounterClockwise_Positive
 
         // --- RIGHT TALON ---
-        val RIGHT_NEUTRAL_MODE = NeutralModeValue.Brake // check
-        val RIGHT_INVERSION = InvertedValue.CounterClockwise_Positive // double check
+        val RIGHT_NEUTRAL_MODE = NeutralModeValue.Brake
+        val RIGHT_INVERSION = InvertedValue.Clockwise_Positive
 
         // --- PHYSICAL SPEC & GEARING ---
         const val CARRIAGE_MASS = 4.0
-        const val GEAR_RATIO = 0.66666666 // 2/3
-        const val DRUM_RADIUS = 5.0 // IDK YET
-        const val MIN_ELEVATOR_HEIGHT = 0.027637 // Make that it rung is not on top of each other
-        val MAX_ELEVATOR_HEIGHT = Units.inchesToMeters(52.0)
+        const val GEAR_RATIO = 2.0/3.0
+        const val DRUM_RADIUS = 0.02
+        const val MIN_ELEVATOR_HEIGHT = 0.0
+        const val MAX_ELEVATOR_HEIGHT = 1.735
     }
 }

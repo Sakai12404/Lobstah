@@ -19,7 +19,7 @@ interface ElevatorIO {
 
         @JvmField var leftTempCelsius: Double = 0.0
 
-        @JvmField var leftPositionRad: Double = 0.0
+        @JvmField var leftPosition: Double = 0.0
 
         @JvmField var rightConnected: Boolean = false
 
@@ -33,9 +33,9 @@ interface ElevatorIO {
 
         @JvmField var rightTempCelsius: Double = 0.0
 
-        @JvmField var rightPositionRad: Double = 0.0
+        @JvmField var elevatorPos: Double = 0.0
 
-        @JvmField var elevatorPos: Double = ElevatorConstants.MIN_ELEVATOR_HEIGHT
+        @JvmField var rightPosition: Double = 0.0
     }
 
     fun updateInputs(inputs: ElevatorIOInputs) {}

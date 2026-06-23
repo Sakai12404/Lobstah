@@ -77,7 +77,7 @@ open class ElevatorIOHardware : ElevatorIO {
         inputs.leftSupplyCurrentAmps = leftSupplyCurrent.valueAsDouble
         inputs.leftStatorCurrentAmps = leftStatorCurrent.valueAsDouble
         inputs.leftTempCelsius = leftTemp.valueAsDouble
-        inputs.leftPositionRad = leftPosition.valueAsDouble
+        inputs.leftPosition = leftPosition.valueAsDouble
 
         inputs.rightConnected = isRightConnected
         inputs.rightAppliedVoltage = rightVoltage.valueAsDouble
@@ -85,15 +85,13 @@ open class ElevatorIOHardware : ElevatorIO {
         inputs.rightSupplyCurrentAmps = rightSupplyCurrent.valueAsDouble
         inputs.rightStatorCurrentAmps = rightStatorCurrent.valueAsDouble
         inputs.rightTempCelsius = rightTemp.valueAsDouble
-        inputs.rightPositionRad = rightPosition.valueAsDouble
-
-        inputs.elevatorPos = 0.0
+        inputs.rightPosition = rightPosition.valueAsDouble
     }
 
     // sets both motors control based of position requests
     override fun setPosition(position: Double) {
-        left.setControl(leftPositionRequest.withPosition(position))
-        right.setControl(rightPositionRequest.withPosition(position))
+        left.setControl(leftPositionRequest.withPosition(position * ElevatorConstants.DRUM_RADIUS * 2 * Math.PI))
+        right.setControl(rightPositionRequest.withPosition(position * ElevatorConstants.DRUM_RADIUS * 2 * Math.PI))
     }
 
     // THE CONFIGURATIONS
@@ -101,10 +99,11 @@ open class ElevatorIOHardware : ElevatorIO {
         // CONSTANTS MAYBE
         val talonSlot0Config =
             Slot0Configs().apply {
-                kP = 100.0
-                kI = 0.0
-                kD = 0.1
-                kS = 0.2
+                kP = ElevatorConstants.kP
+                kI = ElevatorConstants.kI
+                kD = ElevatorConstants.kD
+                kG = ElevatorConstants.kG
+
             }
         val leftConfig =
             TalonFXConfiguration().apply {

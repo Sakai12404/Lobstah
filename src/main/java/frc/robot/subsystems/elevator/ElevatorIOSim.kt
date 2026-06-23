@@ -4,6 +4,7 @@ import edu.wpi.first.math.system.plant.DCMotor
 import edu.wpi.first.wpilibj.simulation.ElevatorSim
 import frc.robot.Constants
 import frc.robot.Constants.ElevatorConstants
+import org.littletonrobotics.junction.Logger
 
 class ElevatorIOSim : ElevatorIOHardware() {
     val elevatorSim: ElevatorSim =
@@ -15,7 +16,7 @@ class ElevatorIOSim : ElevatorIOHardware() {
             ElevatorConstants.MIN_ELEVATOR_HEIGHT,
             ElevatorConstants.MAX_ELEVATOR_HEIGHT,
             true,
-            ElevatorConstants.MIN_ELEVATOR_HEIGHT,
+            0.0,
         )
 
     private val leftSimState = left.simState
@@ -24,14 +25,18 @@ class ElevatorIOSim : ElevatorIOHardware() {
     override fun updateInputs(inputs: ElevatorIO.ElevatorIOInputs) {
         super.updateInputs(inputs)
 
-        inputs.elevatorPos = elevatorSim.positionMeters
         leftSimState.setSupplyVoltage(12.0)
         rightSimState.setSupplyVoltage(12.0)
         elevatorSim.setInput(leftSimState.motorVoltage)
         elevatorSim.update(Constants.LOOP_TIME)
-
-        val elevatorPos = elevatorSim.positionMeters * ElevatorConstants.GEAR_RATIO
-        leftSimState.setRawRotorPosition(elevatorPos)
-        rightSimState.setRawRotorPosition(elevatorPos)
+        val motorPos = elevatorSim.positionMeters * ElevatorConstants.DRUM_RADIUS * 2 * Math.PI
+        inputs.elevatorPos = elevatorSim.positionMeters
+        leftSimState.setRawRotorPosition(motorPos)
+        rightSimState.setRawRotorPosition(motorPos)
+        val motorVelocity = elevatorSim.velocityMetersPerSecond * ElevatorConstants.DRUM_RADIUS * 2 * Math.PI
+        leftSimState.setRotorVelocity(motorVelocity)
+        rightSimState.setRotorVelocity(motorVelocity)
+        Logger.recordOutput("Elevator/HasHitUpperLimit", elevatorSim.hasHitUpperLimit())
+        Logger.recordOutput("Elevator/HasHitLowerLimit", elevatorSim.hasHitLowerLimit())
     }
 }

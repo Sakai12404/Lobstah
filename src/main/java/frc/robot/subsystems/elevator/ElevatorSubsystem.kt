@@ -2,6 +2,7 @@ package frc.robot.subsystems.elevator
 
 import edu.wpi.first.wpilibj.Alert
 import edu.wpi.first.wpilibj2.command.Command
+import edu.wpi.first.wpilibj2.command.Commands
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup
 import edu.wpi.first.wpilibj2.command.SubsystemBase
 import edu.wpi.first.wpilibj2.command.WaitCommand
@@ -14,8 +15,10 @@ class ElevatorSubsystem(
 ) : SubsystemBase() {
     private val inputs: ElevatorIOInputsAutoLogged = ElevatorIOInputsAutoLogged()
 
-    var elevatorTargetPosition: Double = inputs.elevatorPos
+    var elevatorTargetPosition: Double = 0.0
         private set
+    val elevatorPos: Double
+        get() = inputs.elevatorPos
 
     private val leftDisconnectAlert =
         Alert("LEFT ELEVATOR MOTOR DISCONNECTED ID(${ElevatorConstants.LEFT_ID}).", Alert.AlertType.kError)
@@ -31,13 +34,15 @@ class ElevatorSubsystem(
 
         Logger.recordOutput("Elevator/ActiveCommand", currentCommand?.name ?: "None")
         Logger.recordOutput("Elevator/elevatorTargetPosition", elevatorTargetPosition)
+
+        Commands.runOnce( { moveElevator(1.00) } )
     }
 
     // MOVES ELEVATOR BY X METERS ABOVE HARDSTOP
     fun moveElevator(x: Double): Command =
         runOnce {
             elevatorTargetPosition = x
-            io.setPosition(x * (1 / ElevatorConstants.GEAR_RATIO)) // SUPPOSEDLY ONE TURN IS ONE METER SO THIS SHOULD BE RIGHT
+            io.setPosition(x)
         }
 
     // MOVES ELEVATOR BY X METERS ABOVE HARDSTOP THEN WAIT 1 SEC THEN MOVE Y METERS ABOVE HARDSTOP
@@ -47,11 +52,11 @@ class ElevatorSubsystem(
     ): Command =
         SequentialCommandGroup(
             moveElevator(x),
-            WaitCommand(1.0),
+            WaitCommand(2.0),
             moveElevator(y)
         )
 
     // RETURNS THE ELEVATOR TO THE BOTTOM
-    fun returnElevatorBottom(): Command = moveElevator(0.027637)
+    fun returnElevatorBottom(): Command = moveElevator(0.0)
 
 }
