@@ -8,7 +8,6 @@ import edu.wpi.first.math.geometry.Rotation3d
 import edu.wpi.first.math.util.Units
 import edu.wpi.first.wpilibj.util.WPILibVersion
 import edu.wpi.first.wpilibj2.command.CommandScheduler
-import edu.wpi.first.wpilibj2.command.Commands.runOnce
 import org.littletonrobotics.junction.LoggedRobot
 import org.littletonrobotics.junction.Logger
 import org.littletonrobotics.junction.networktables.NT4Publisher
@@ -31,7 +30,7 @@ class Robot : LoggedRobot() {
     }
 
     override fun robotInit() {
-        //robotContainer.bindings.setDefaultCommands()
+        robotContainer.bindings.setDefaultCommands()
         robotContainer.bindings.bindControls()
     }
 

@@ -2,7 +2,6 @@ package frc.robot
 
 import com.ctre.phoenix6.signals.InvertedValue
 import com.ctre.phoenix6.signals.NeutralModeValue
-import edu.wpi.first.math.util.Units
 import edu.wpi.first.wpilibj.RobotBase
 import kotlin.math.PI
 
@@ -77,7 +76,7 @@ object Constants {
 
         // --- PHYSICAL SPEC & GEARING ---
         const val CARRIAGE_MASS = 4.0
-        const val GEAR_RATIO = 2.0/3.0
+        const val GEAR_RATIO = 2.0 / 3.0
         const val DRUM_RADIUS = 0.02
         const val MIN_ELEVATOR_HEIGHT = 0.0
         const val MAX_ELEVATOR_HEIGHT = 1.735

@@ -6,7 +6,8 @@ class Binding(
     val robotContainer: RobotContainer,
 ) {
     val driver = robotContainer.driveController
-    /*fun setDefaultCommands() {
+
+    fun setDefaultCommands() {
         robotContainer.drive.defaultCommand =
             SwerveRequestCommand(
                 robotContainer.drive,
@@ -14,7 +15,7 @@ class Binding(
                 { -driver.leftX },
                 { -driver.rightX },
             )
-    }*/
+    }
 
     // simple control binds with arbitrary values
     fun bindControls() {

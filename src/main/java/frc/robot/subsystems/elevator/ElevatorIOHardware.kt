@@ -21,14 +21,12 @@ open class ElevatorIOHardware : ElevatorIO {
     private val leftSupplyCurrent = left.supplyCurrent
     private val leftStatorCurrent = left.statorCurrent
     private val leftTemp = left.deviceTemp
-    private val leftPosition = left.position
 
     private val rightVoltage = right.motorVoltage
     private val rightVelocity = right.velocity
     private val rightSupplyCurrent = right.supplyCurrent
     private val rightStatorCurrent = right.statorCurrent
     private val rightTemp = right.deviceTemp
-    private val rightPosition = right.position
 
     private val elevatorSignals =
         arrayOf(
@@ -37,13 +35,11 @@ open class ElevatorIOHardware : ElevatorIO {
             leftSupplyCurrent,
             leftStatorCurrent,
             leftTemp,
-            leftPosition,
             rightVoltage,
             rightVelocity,
             rightSupplyCurrent,
             rightStatorCurrent,
             rightTemp,
-            rightPosition,
         )
 
     private val isLeftConnected: Boolean
@@ -77,7 +73,6 @@ open class ElevatorIOHardware : ElevatorIO {
         inputs.leftSupplyCurrentAmps = leftSupplyCurrent.valueAsDouble
         inputs.leftStatorCurrentAmps = leftStatorCurrent.valueAsDouble
         inputs.leftTempCelsius = leftTemp.valueAsDouble
-        inputs.leftPosition = leftPosition.valueAsDouble
 
         inputs.rightConnected = isRightConnected
         inputs.rightAppliedVoltage = rightVoltage.valueAsDouble
@@ -85,7 +80,6 @@ open class ElevatorIOHardware : ElevatorIO {
         inputs.rightSupplyCurrentAmps = rightSupplyCurrent.valueAsDouble
         inputs.rightStatorCurrentAmps = rightStatorCurrent.valueAsDouble
         inputs.rightTempCelsius = rightTemp.valueAsDouble
-        inputs.rightPosition = rightPosition.valueAsDouble
     }
 
     // sets both motors control based of position requests
@@ -103,7 +97,6 @@ open class ElevatorIOHardware : ElevatorIO {
                 kI = ElevatorConstants.kI
                 kD = ElevatorConstants.kD
                 kG = ElevatorConstants.kG
-
             }
         val leftConfig =
             TalonFXConfiguration().apply {
