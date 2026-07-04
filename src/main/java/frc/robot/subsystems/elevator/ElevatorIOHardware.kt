@@ -5,6 +5,7 @@ import com.ctre.phoenix6.configs.Slot0Configs
 import com.ctre.phoenix6.configs.TalonFXConfiguration
 import com.ctre.phoenix6.controls.PositionVoltage
 import com.ctre.phoenix6.hardware.TalonFX
+import edu.wpi.first.units.Units
 import frc.robot.Constants.ElevatorConstants
 import frc.team449.util.PhoenixUtil.tryUntilOk
 
@@ -68,18 +69,18 @@ open class ElevatorIOHardware : ElevatorIO {
         BaseStatusSignal.refreshAll(*elevatorSignals)
 
         inputs.leftConnected = isLeftConnected
-        inputs.leftAppliedVoltage = leftVoltage.valueAsDouble
-        inputs.leftVelocityRadPerSec = leftVelocity.valueAsDouble
-        inputs.leftSupplyCurrentAmps = leftSupplyCurrent.valueAsDouble
-        inputs.leftStatorCurrentAmps = leftStatorCurrent.valueAsDouble
-        inputs.leftTempCelsius = leftTemp.valueAsDouble
+        inputs.leftAppliedVoltage = leftVoltage.value.`in`(Units.Volts)
+        inputs.leftVelocityRadPerSec = leftVelocity.value.`in`(Units.RadiansPerSecond)
+        inputs.leftSupplyCurrentAmps = leftSupplyCurrent.value.`in`(Units.Amps)
+        inputs.leftStatorCurrentAmps = leftStatorCurrent.value.`in`(Units.Amps)
+        inputs.leftTempCelsius = leftTemp.value.`in`(Units.Celsius)
 
         inputs.rightConnected = isRightConnected
-        inputs.rightAppliedVoltage = rightVoltage.valueAsDouble
-        inputs.rightVelocityRadPerSec = rightVelocity.valueAsDouble
-        inputs.rightSupplyCurrentAmps = rightSupplyCurrent.valueAsDouble
-        inputs.rightStatorCurrentAmps = rightStatorCurrent.valueAsDouble
-        inputs.rightTempCelsius = rightTemp.valueAsDouble
+        inputs.rightAppliedVoltage = rightVoltage.value.`in`(Units.Volts)
+        inputs.rightVelocityRadPerSec = rightVelocity.value.`in`(Units.RadiansPerSecond)
+        inputs.rightSupplyCurrentAmps = rightSupplyCurrent.value.`in`(Units.Amps)
+        inputs.rightStatorCurrentAmps = rightStatorCurrent.value.`in`(Units.Amps)
+        inputs.rightTempCelsius = rightTemp.value.`in`(Units.Celsius)
     }
 
     // sets both motors control based of position requests
